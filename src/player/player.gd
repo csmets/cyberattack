@@ -6,9 +6,12 @@ onready var bullet = preload("res://src/bullet/bullet.tscn")
 
 var shooting = false
 
-func _process(delta):
+func _physics_process(delta):
+	look_at(get_global_mouse_position())
+	
 	var is_moving = false
 	var movement_direction := Vector2.ZERO
+	
 	if Input.is_action_pressed("up"):
 		movement_direction.y = -1
 		is_moving = true
@@ -25,15 +28,11 @@ func _process(delta):
 	movement_direction = movement_direction.normalized()
 	move_and_slide(movement_direction * speed)
 	
-	look_at(get_global_mouse_position())
-	
 	if is_moving:
 		$AnimatedSprite.play("move")
 	elif not is_moving and not shooting:
 		$AnimatedSprite.play("idle")
-
-
-func _physics_process(delta):
+	
 	if Input.is_action_pressed("shoot"):
 		shoot()
 		$muzzle_flash.visible = true
