@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/manBlue_reload.png-abc802ef8fb3aa0a04d470417627a1eb.stex"
+path="res://.import/flash_light.png-8ef587a72e8df61165c326b10cb0f0b9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/player/resources/manBlue_reload.png"
-dest_files=[ "res://.import/manBlue_reload.png-abc802ef8fb3aa0a04d470417627a1eb.stex" ]
+source_file="res://assets/flash_light.png"
+dest_files=[ "res://.import/flash_light.png-8ef587a72e8df61165c326b10cb0f0b9.stex" ]
 
 [params]
 
