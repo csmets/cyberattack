@@ -9,20 +9,13 @@ var shooting = false
 var time_tracker: float = 0.0
 var stop_timer: bool = false
 
-func timer(delta: float, max_seconds: float, do_once: bool = false) -> bool:
-	time_tracker += delta
-	if time_tracker > max_seconds and stop_timer == false:
-		time_tracker = 0.0
-		if do_once:
-			stop_timer = true
-		return true
-	return false
+var delta_timer = Delta_Timer.new()
 
 func _physics_process(delta):
 	movement()
 	
 	if Input.is_action_pressed("shoot"):
-		if timer(delta, 0.2):
+		if delta_timer.timer(delta, 0.2):
 			shoot()
 			$muzzle_flash.visible = true
 			$AnimatedSprite.play("shoot")
