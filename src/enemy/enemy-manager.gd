@@ -5,7 +5,7 @@ var wave_multiplier = 3
 
 var spawn_points: Array = []
 
-var wave = 1
+var wave = 0
 
 onready var enemy = preload("res://src/enemy/enemy.tscn")
 
@@ -22,6 +22,7 @@ func _physics_process(delta):
 
 func spawn_enemies():
 	wave += 1
+	Game_data.wave_count = wave
 	var number_to_spawn = wave * wave_multiplier
 	for number in range(number_to_spawn):
 		spawn_enemy(spawn_position())

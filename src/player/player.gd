@@ -17,24 +17,24 @@ func _physics_process(delta):
 	if Input.is_action_pressed("shoot"):
 		if delta_timer.timer(delta, 0.2):
 			shoot()
-			$muzzle_flash.visible = true
+			$AnimatedSprite/muzzle_flash.visible = true
 			$AnimatedSprite.play("shoot")
-			$muzzle_flash_light.visible = true
+			$AnimatedSprite/muzzle_flash_light.visible = true
 		else:
-			$muzzle_flash.visible = false
-			$muzzle_flash_light.visible = false
+			$AnimatedSprite/muzzle_flash.visible = false
+			$AnimatedSprite/muzzle_flash_light.visible = false
 		
 		shooting = true
 	else:
 		shooting = false
-		$muzzle_flash.visible = false
-		$muzzle_flash_light.visible = false
+		$AnimatedSprite/muzzle_flash.visible = false
+		$AnimatedSprite/muzzle_flash_light.visible = false
 
 
 func shoot():
 	var bullet_instance = bullet.instance()
 	get_tree().root.add_child(bullet_instance)
-	var bullet_spawn_pos = $End_of_gun.global_position
+	var bullet_spawn_pos = $AnimatedSprite/End_of_gun.global_position
 	bullet_instance.global_position = bullet_spawn_pos
 	var target = get_global_mouse_position()
 	var direction_to_mouse = bullet_instance.global_position.direction_to(target).normalized()
@@ -44,7 +44,7 @@ func shoot():
 
 func movement():
 	if shooting:
-		look_at(get_global_mouse_position())
+		$AnimatedSprite.look_at(get_global_mouse_position())
 	
 	var is_moving = false
 	var movement_direction := Vector2.ZERO
@@ -68,7 +68,7 @@ func movement():
 		is_moving = true
 	
 	if is_moving and not shooting:
-		rotation_degrees = rotate
+		$AnimatedSprite.rotation_degrees = rotate
 	
 	movement_direction = movement_direction.normalized()
 	move_and_slide(movement_direction * speed)

@@ -5,9 +5,18 @@ onready var explosion = preload("res://src/explosions/explosion.tscn")
 var target: Vector2 = Vector2.ZERO
 var speed = 2
 
+var rng = RandomNumberGenerator.new()
+var spawn_time = 0
+var delta_timer = Delta_Timer.new()
+var spawn = false
+
 func _ready():
+	rng.randomize()
+	spawn_time = rng.randf_range(0.0, 10.0)
+	self.visible = false
 	var targets = get_tree().get_nodes_in_group("target")
 	var non_infected_targets = filter_out_infected(targets)
+	
 	if non_infected_targets.size() > 0:
 		non_infected_targets.shuffle()
 		target = non_infected_targets[0].global_position
@@ -23,7 +32,11 @@ func filter_out_infected(targets: Array) -> Array:
 
 
 func _physics_process(delta):
-	if target != Vector2.ZERO:
+	if target != Vector2.ZERO and delta_timer.timer(delta, spawn_time, true):
+		spawn = true
+		self.visible = true
+	
+	if spawn:
 		var velocity = position.direction_to(target) * speed
 		
 		position += velocity

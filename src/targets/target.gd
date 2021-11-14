@@ -30,10 +30,12 @@ func _on_area_entered(area: Area2D):
 	# When enemy enters infect it
 	if area.is_in_group("enemy"):
 		area.queue_free()
-		sprite.self_modulate = infected_color
-		_infected = true
-		health = 0
-		$infected.play()
+		if not is_infected():
+			sprite.self_modulate = infected_color
+			_infected = true
+			health = 0
+			$infected.play()
+			Game_data.infected_count += 1
 
 
 func _on_body_entered(body):
@@ -69,4 +71,5 @@ func _repair(delta: float):
 			repair = false
 			sprite.self_modulate = Color(1, 1, 1)
 			$healed.play()
+			Game_data.infected_count -= 1
 			

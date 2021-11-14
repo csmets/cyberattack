@@ -24,6 +24,16 @@ config/name="Cyberattack"
 run/main_scene="res://levels/demo_level.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Game_data="*res://src/autoload/game-data.gd"
+
+[display]
+
+window/size/width=1200
+window/size/height=700
+window/stretch/aspect="keep"
+
 [input]
 
 up={
