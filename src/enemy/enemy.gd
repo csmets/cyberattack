@@ -1,5 +1,7 @@
 extends Area2D
 
+onready var explosion = preload("res://src/explosions/explosion.tscn")
+
 var target: Vector2 = Vector2.ZERO
 var speed = 2
 
@@ -29,4 +31,8 @@ func _physics_process(delta):
 
 func _on_area_entered(area: Area2D):
 	if area.is_in_group("bullet"):
+		# add an explosion to the scene
+		var explosion_instance = explosion.instance()
+		get_tree().root.add_child(explosion_instance)
+		explosion_instance.position = self.global_position
 		self.queue_free()
