@@ -17,15 +17,12 @@ func set_direction(direction: Vector2):
 
 
 func _on_Area2D_body_entered(body):
-	$Area2D/CollisionShape2D.disabled = true
 	if body.is_in_group("wall"):
 		$wall_hit.play()
 	elif body.is_in_group("rock"):
 		$rock_hit.play()
 	elif body.is_in_group("glass"):
 		$glass_hit.play()
-	$Sprite.visible = false
-	stop = true
 
 
 func _on_Timer_timeout():

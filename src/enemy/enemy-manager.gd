@@ -21,11 +21,10 @@ func _physics_process(delta):
 
 
 func spawn_enemies():
-	if wave <= number_of_waves:
-		wave += 1
-		var number_to_spawn = wave * wave_multiplier
-		for number in range(number_to_spawn):
-			spawn_enemy(spawn_position())
+	wave += 1
+	var number_to_spawn = wave * wave_multiplier
+	for number in range(number_to_spawn):
+		spawn_enemy(spawn_position())
 
 
 func spawn_position() -> Vector2:

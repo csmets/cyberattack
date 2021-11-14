@@ -1,12 +1,23 @@
-extends Sprite
+extends Area2D
 
 var target: Vector2 = Vector2.ZERO
 var speed = 2
 
 func _ready():
 	var targets = get_tree().get_nodes_in_group("target")
-	targets.shuffle()
-	target = targets[0].global_position
+	var non_infected_targets = filter_out_infected(targets)
+	if non_infected_targets.size() > 0:
+		non_infected_targets.shuffle()
+		target = non_infected_targets[0].global_position
+
+
+func filter_out_infected(targets: Array) -> Array:
+	var filtered_list = []
+	for target in targets:
+		if not target.is_infected():
+			filtered_list.append(target)
+	
+	return filtered_list
 
 
 func _physics_process(delta):
