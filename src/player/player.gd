@@ -40,6 +40,7 @@ func shoot():
 	var direction_to_mouse = bullet_instance.global_position.direction_to(target).normalized()
 	bullet_instance.look_at(target)
 	bullet_instance.set_direction(direction_to_mouse)
+	Game_data.camera.shake(15)
 
 
 func movement():

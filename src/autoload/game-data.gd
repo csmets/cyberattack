@@ -8,6 +8,8 @@ signal spawn_enemies
 var wave_count = 0 setget set_wave_count
 var infected_count = 0 setget set_infected_count
 
+var camera = null
+
 
 func set_wave_count(value: int):
 	wave_count = value
