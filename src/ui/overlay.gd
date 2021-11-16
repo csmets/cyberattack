@@ -5,6 +5,8 @@ func _ready():
 	
 	Game_data.connect("Infected_updated", self, "update_infected_count")
 	Game_data.connect("Wave_updated", self, "update_wave_count")
+	
+	$Timer.start()
 
 
 func update_infected_count(value: int):

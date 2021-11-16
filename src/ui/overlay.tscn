@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/ui/overlay.gd" type="Script" id=1]
+[ext_resource path="res://src/ui/timer.tscn" type="PackedScene" id=2]
 
 [node name="Overlay" type="Control"]
 margin_left = -513.0
@@ -52,3 +53,14 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Timer" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -28.0
+margin_top = -30.0
+margin_right = 28.0
+margin_bottom = -16.0
+text = "00:00:00"
