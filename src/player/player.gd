@@ -10,25 +10,33 @@ var time_tracker: float = 0.0
 var stop_timer: bool = false
 
 var delta_timer = Delta_Timer.new()
+var single_shot = true
+
 
 func _physics_process(delta):
 	movement()
 	
-	if Input.is_action_pressed("shoot"):
+	
+	# TODO improve shooting times
+	if Input.is_action_pressed("shoot") and single_shot:
+		shoot()
+		single_shot = false
+		shooting = true
+	elif Input.is_action_pressed("shoot") and not single_shot:
 		if delta_timer.timer(delta, 0.2):
 			shoot()
-			$AnimatedSprite/muzzle_flash.visible = true
-			$AnimatedSprite.play("shoot")
-			$AnimatedSprite/muzzle_flash_light.visible = true
 		else:
 			$AnimatedSprite/muzzle_flash.visible = false
 			$AnimatedSprite/muzzle_flash_light.visible = false
-		
 		shooting = true
 	else:
 		shooting = false
 		$AnimatedSprite/muzzle_flash.visible = false
 		$AnimatedSprite/muzzle_flash_light.visible = false
+	
+	if Input.is_action_just_released("shoot") and not single_shot:
+		single_shot = true
+		shooting = false
 
 
 func shoot():
@@ -41,6 +49,9 @@ func shoot():
 	bullet_instance.look_at(target)
 	bullet_instance.set_direction(direction_to_mouse)
 	Game_data.camera.shake(15)
+	$AnimatedSprite/muzzle_flash.visible = true
+	$AnimatedSprite.play("shoot")
+	$AnimatedSprite/muzzle_flash_light.visible = true
 
 
 func movement():
