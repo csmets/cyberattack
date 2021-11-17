@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/level_tilemap.tres" type="TileSet" id=2]
@@ -7,6 +7,12 @@
 [ext_resource path="res://src/enemy/enemy-manager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/targets/toaster.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/targets/tv.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/tilesheet_complete.png" type="Texture" id=8]
+
+[sub_resource type="PhysicsMaterial" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 25.8625, 21.1906 )
 
 [node name="demo_level" type="Node2D"]
 
@@ -27,7 +33,7 @@ tile_set = ExtResource( 2 )
 collision_layer = 3
 collision_mask = 3
 format = 1
-tile_data = PoolIntArray( -655357, 22, 0, -655356, 20, 0, -655355, 25, 0, -655352, 27, 0, -655351, 20, 0, -655350, 21, 0, -589821, 26, 0, -589814, 19, 0, -524278, 19, 0, -458742, 26, 0, -393213, 28, 0, -327677, 23, 0, -327676, 20, 0, -327675, 20, 0, -327674, 21, 0, -262138, 19, 0, -196602, 19, 0, -196598, 28, 0, -131066, 19, 0, -131062, 19, 0, -65530, 23, 0, -65529, 20, 0, -65527, 20, 0, -65526, 24, 0 )
+tile_data = PoolIntArray( -655357, 22, 0, -655356, 20, 0, -655355, 25, 0, -655352, 27, 0, -655351, 20, 0, -655350, 21, 0, -589821, 26, 0, -589816, 41, 0, -589815, 42, 0, -589814, 19, 0, -524278, 19, 0, -458742, 26, 0, -393213, 28, 0, -393212, 43, 0, -393211, 44, 0, -393210, 45, 0, -327677, 23, 0, -327676, 20, 0, -327675, 20, 0, -327674, 21, 0, -262138, 19, 0, -196602, 19, 0, -196598, 28, 0, -131066, 19, 0, -131062, 19, 0, -65530, 23, 0, -65529, 20, 0, -65527, 20, 0, -65526, 24, 0 )
 
 [node name="glass" type="TileMap" parent="." groups=["glass"]]
 tile_set = ExtResource( 2 )
@@ -35,6 +41,11 @@ collision_layer = 3
 collision_mask = 3
 format = 1
 tile_data = PoolIntArray( -655354, 35, 0, -655353, 35, 0, -393206, 34, 0, -327670, 34, 0, -262134, 34, 0, -65528, 36, 0 )
+
+[node name="vegetation" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+format = 1
+tile_data = PoolIntArray( -851962, 39, 0, -720909, 38, 0, -720908, 38, 0, -786431, 38, 0, -786414, 39, 0, -655373, 38, 0, -655372, 38, 0, -720884, 38, 0, -720878, 39, 0, -720877, 39, 0, -720876, 39, 0, -589837, 38, 0, -589834, 38, 0, -655341, 39, 0, -655340, 39, 0, -458761, 39, 0, -458755, 39, 0, -458737, 38, 0, -262151, 38, 0, -327668, 39, 0, -65540, 38, 0, -131071, 38, 0, -131059, 38, 0, 131067, 39, 0, 196599, 38, 0, 196609, 39, 0, 327670, 38, 0, 327675, 38, 0, 262145, 38, 0, 262146, 39, 0, 262156, 38, 0, 262163, 39, 0, 327686, 38, 0, 327699, 39, 0, 393233, 39, 0, 393235, 39, 0, 524275, 38, 0, 458757, 39, 0, 458771, 39, 0, 589820, 39, 0, 655349, 39, 0, 720883, 39, 0, 720889, 38, 0, 655370, 38, 0, 786431, 39, 0, 851972, 38, 0, 917518, 38, 0, 983052, 38, 0 )
 
 [node name="CanvasModulate" parent="." instance=ExtResource( 3 )]
 
@@ -122,6 +133,24 @@ position = Vector2( 603.691, -542.222 )
 
 [node name="Toaster2" parent="targets" instance=ExtResource( 6 )]
 position = Vector2( 483.819, -109.928 )
+
+[node name="chair" type="RigidBody2D" parent="."]
+position = Vector2( 608.112, -91.9239 )
+physics_material_override = SubResource( 2 )
+gravity_scale = 0.0
+can_sleep = false
+linear_damp = 100.0
+angular_velocity = 100.0
+angular_damp = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chair"]
+position = Vector2( -1.30765, -1.07629 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="chair"]
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 902, 1226, 53, 45 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 437.76, -406.331 )
