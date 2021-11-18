@@ -26,6 +26,7 @@ func _physics_process(delta):
 
 func next_wave():
 	Game_data.start_countdown(wave_time)
+	Game_data.spawn_powerups(wave + 1)
 
 
 func spawn_enemies():

@@ -12,3 +12,7 @@ func timer(delta: float, max_seconds: float, do_once: bool = false) -> bool:
 			stop_timer = true
 		return true
 	return false
+
+
+func reset():
+	time_tracker = 0.0

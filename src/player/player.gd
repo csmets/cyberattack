@@ -11,23 +11,35 @@ var stop_timer: bool = false
 
 var delta_timer = Delta_Timer.new()
 var single_shot = true
+var use_powerup = false
+var powerup_values = null
+var powerup_timer = Delta_Timer.new()
+
+func _ready():
+	Game_data.connect("update_shoot", self, "update_shoot_values")
+
+
+func update_shoot_values(values):
+	powerup_values = values
+	use_powerup = true
+	powerup_timer.reset()
 
 
 func _physics_process(delta):
 	movement()
 	
+	if use_powerup and powerup_timer.timer(delta, powerup_values.time):
+		use_powerup = false
 	
-	# TODO improve shooting times
-	if Input.is_action_pressed("shoot") and single_shot:
-		shoot()
+	if Input.is_action_pressed("shoot") and use_powerup:
+		shoot(delta, powerup_values.rate, powerup_values.spread, powerup_values.amount, powerup_values.color)
+		shooting = true
+	elif Input.is_action_pressed("shoot") and single_shot:
+		shoot(delta, 0, 0, 1)
 		single_shot = false
 		shooting = true
 	elif Input.is_action_pressed("shoot") and not single_shot:
-		if delta_timer.timer(delta, 0.2):
-			shoot()
-		else:
-			$AnimatedSprite/muzzle_flash.visible = false
-			$AnimatedSprite/muzzle_flash_light.visible = false
+		shoot(delta, 0.2, 0, 1)
 		shooting = true
 	else:
 		shooting = false
@@ -39,19 +51,31 @@ func _physics_process(delta):
 		shooting = false
 
 
-func shoot():
-	var bullet_instance = bullet.instance()
-	get_tree().root.add_child(bullet_instance)
-	var bullet_spawn_pos = $AnimatedSprite/End_of_gun.global_position
-	bullet_instance.global_position = bullet_spawn_pos
-	var target = get_global_mouse_position()
-	var direction_to_mouse = bullet_instance.global_position.direction_to(target).normalized()
-	bullet_instance.look_at(target)
-	bullet_instance.set_direction(direction_to_mouse)
-	Game_data.camera.shake(15)
-	$AnimatedSprite/muzzle_flash.visible = true
-	$AnimatedSprite.play("shoot")
-	$AnimatedSprite/muzzle_flash_light.visible = true
+func shoot(delta: float, rate: float, spread: float, amount: int, color = null):
+	if delta_timer.timer(delta, rate):
+		
+		for num in range(amount):
+			var bullet_instance = bullet.instance()
+			get_tree().root.add_child(bullet_instance)
+			var bullet_spawn_pos = $AnimatedSprite/End_of_gun.global_position
+			bullet_instance.global_position = bullet_spawn_pos
+			var target = get_global_mouse_position()
+			var direction_to_mouse = bullet_instance.global_position.direction_to(target).normalized()
+			bullet_instance.look_at(target)
+			if spread > 0 and amount > 1:
+				var degree = (spread / (amount - 1)) * num
+				bullet_instance.rotation_degrees = bullet_instance.rotation_degrees - (spread / 2) + degree
+			
+			if color != null:
+				bullet_instance.modulate = color
+			
+		Game_data.camera.shake(15)
+		$AnimatedSprite/muzzle_flash.visible = true
+		$AnimatedSprite.play("shoot")
+		$AnimatedSprite/muzzle_flash_light.visible = true
+	else:
+		$AnimatedSprite/muzzle_flash.visible = false
+		$AnimatedSprite/muzzle_flash_light.visible = false
 
 
 func movement():

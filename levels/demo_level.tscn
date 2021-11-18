@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/level_tilemap.tres" type="TileSet" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://src/targets/toaster.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/targets/tv.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/tilesheet_complete.png" type="Texture" id=8]
+[ext_resource path="res://src/powerups/powerup-spawn-manager.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/powerups/powerup-spawn-point.tscn" type="PackedScene" id=11]
 
 [sub_resource type="PhysicsMaterial" id=2]
 
@@ -152,5 +154,72 @@ texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 902, 1226, 53, 45 )
 
+[node name="pu_spawn_points" type="Node2D" parent="."]
+
+[node name="Powerup_spawn_point" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( -453.588, -104.251 )
+
+[node name="Powerup_spawn_point2" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( -430.016, -495.99 )
+
+[node name="Powerup_spawn_point3" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( -643.284, -326.498 )
+
+[node name="Powerup_spawn_point4" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( -405.322, 203.304 )
+
+[node name="Powerup_spawn_point5" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( -698.284, 517.593 )
+
+[node name="Powerup_spawn_point6" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( -130.318, 437.898 )
+
+[node name="Powerup_spawn_point7" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( -240.32, 727.494 )
+
+[node name="Powerup_spawn_point8" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( 232.237, 607.39 )
+
+[node name="Powerup_spawn_point9" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( 506.118, 873.414 )
+
+[node name="Powerup_spawn_point10" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( 822.652, 556.879 )
+
+[node name="Powerup_spawn_point11" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( 599.282, 285.244 )
+
+[node name="Powerup_spawn_point12" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( 925.919, -214.252 )
+
+[node name="Powerup_spawn_point13" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( 924.796, 111.262 )
+
+[node name="Powerup_spawn_point14" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( 204.176, 85.4454 )
+
+[node name="Powerup_spawn_point15" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( -62.9704, -218.742 )
+
+[node name="Powerup_spawn_point16" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( -223.482, -769.871 )
+
+[node name="Powerup_spawn_point17" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( 261.421, -786.708 )
+
+[node name="Powerup_spawn_point18" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( 958.47, -620.583 )
+
+[node name="Powerup_spawn_point19" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( 1140.31, -482.52 )
+
+[node name="Powerup_spawn_point20" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( 1104.35, 393.989 )
+
+[node name="Powerup_spawn_point21" parent="pu_spawn_points" instance=ExtResource( 11 )]
+position = Vector2( 864.62, 874.946 )
+
+[node name="Powerup_spawn_manager" parent="." instance=ExtResource( 9 )]
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 437.76, -406.331 )
+position = Vector2( 420.101, -445.853 )

@@ -1,19 +1,14 @@
 extends Node2D
 
 var speed = 30
-var direction = Vector2.ZERO
 
 var stop = false
 
 func _physics_process(delta):
-	if direction != Vector2.ZERO and not stop:
-		var velocity = direction * speed
+	if not stop:
+		var velocity = Vector2(speed, 0).rotated(rotation)
 		
 		global_position += velocity
-
-
-func set_direction(direction: Vector2):
-	self.direction = direction
 
 
 func _on_Area2D_body_entered(body):
