@@ -22,6 +22,7 @@ func _ready():
 func update_shoot_values(values):
 	powerup_values = values
 	use_powerup = true
+	$AudioStreamPlayer2D.play()
 	powerup_timer.reset()
 
 

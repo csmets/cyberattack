@@ -36,6 +36,7 @@ func _on_area_entered(area: Area2D):
 			health = 0
 			$infected.play()
 			Game_data.infected_count += 1
+			Game_data.trigger_infect()
 
 
 func _on_body_entered(body):

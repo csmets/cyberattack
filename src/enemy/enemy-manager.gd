@@ -10,8 +10,11 @@ var spawn_points: Array = []
 var wave = 0
 var trigger_next_wave = false
 
+var rng = RandomNumberGenerator.new()
+
 
 func _ready():
+	rng.randomize()
 	spawn_points = get_tree().get_nodes_in_group("spawn_point")
 	Game_data.connect("spawn_enemies", self, "spawn_enemies")
 
@@ -39,11 +42,9 @@ func spawn_enemies():
 
 
 func spawn_position() -> Vector2:
-	var max_spawn_points = spawn_points.size()
-	
-	spawn_points.shuffle()
-	
-	return spawn_points[0].position
+	var max_spawn_points = spawn_points.size() - 1
+	var index = rng.randi_range(0, max_spawn_points)
+	return spawn_points[index].position
 
 
 func spawn_enemy(position: Vector2):
