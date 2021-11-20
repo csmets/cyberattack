@@ -39,21 +39,6 @@ func _on_area_entered(area: Area2D):
 			Game_data.trigger_infect()
 
 
-func _on_body_entered(body):
-	if body.is_in_group("player") and is_infected():
-		repair = true
-		progress_bar.visible = true
-
-
-func _on_body_exited(body):
-	if body.is_in_group("player") and is_infected():
-		repair = false
-		progress_bar.visible = false
-		if health < 100:
-			health = 0
-			bar.scale.x = 0
-
-
 func _physics_process(delta):
 	_repair(delta)
 
@@ -73,4 +58,18 @@ func _repair(delta: float):
 			sprite.self_modulate = Color(1, 1, 1)
 			$healed.play()
 			Game_data.infected_count -= 1
-			
+
+
+func _on_healing_zone_body_entered(body):
+	if body.is_in_group("player") and is_infected():
+		repair = true
+		progress_bar.visible = true
+
+
+func _on_healing_zone_body_exited(body):
+	if body.is_in_group("player") and is_infected():
+		repair = false
+		progress_bar.visible = false
+		if health < 100:
+			health = 0
+			bar.scale.x = 0
