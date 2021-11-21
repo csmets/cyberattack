@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Cyberattack"
-run/main_scene="res://levels/demo_level.tscn"
+run/main_scene="res://levels/level-1.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -30,8 +30,8 @@ Game_data="*res://src/autoload/game-data.gd"
 
 [display]
 
-window/size/width=320
-window/size/height=180
+window/size/width=640
+window/size/height=360
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
@@ -70,6 +70,7 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 2d/snapping/use_gpu_pixel_snap=true
+threads/thread_model=2
 quality/filters/msaa=2
 quality/filters/use_fxaa=true
 environment/default_environment="res://default_env.tres"

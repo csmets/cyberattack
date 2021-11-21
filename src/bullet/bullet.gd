@@ -1,6 +1,6 @@
 extends Node2D
 
-var speed = 30
+var speed = 5
 
 var stop = false
 

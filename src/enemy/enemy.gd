@@ -3,7 +3,7 @@ extends Area2D
 onready var explosion = preload("res://src/explosions/explosion.tscn")
 
 var target: Vector2 = Vector2.ZERO
-var speed = 2
+var speed = 30
 
 var rng = RandomNumberGenerator.new()
 var spawn_time = 0
@@ -37,7 +37,7 @@ func _physics_process(delta):
 		self.visible = true
 	
 	if spawn:
-		var velocity = position.direction_to(target) * speed
+		var velocity = position.direction_to(target) * speed * delta
 		
 		position += velocity
 

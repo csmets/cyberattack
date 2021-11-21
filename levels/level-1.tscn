@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/cyber-tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/env/environment.tscn" type="PackedScene" id=2]
@@ -9,6 +9,14 @@
 [ext_resource path="res://src/targets/computer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/enemy/spawn-point.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/powerups/powerup-spawn-point.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/ui/overlay.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/light.png" type="Texture" id=11]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+tonemap_mode = 3
+glow_enabled = true
+glow_hdr_threshold = 1.5
 
 [node name="Level_1" type="Node2D"]
 
@@ -41,24 +49,116 @@ tile_data = PoolIntArray( -1048577, 14, 0, -1114112, 2, 0, -1114111, 2, 0, -1114
 [node name="spawn_points" type="Node2D" parent="."]
 
 [node name="Spawn_point" parent="spawn_points" instance=ExtResource( 8 )]
-position = Vector2( -217.143, -221.2 )
+position = Vector2( -147.55, -286.864 )
+
+[node name="Spawn_point2" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( -57.1921, -325.589 )
+
+[node name="Spawn_point3" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( 80.3095, -329.518 )
+
+[node name="Spawn_point4" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( 173.474, -298.089 )
+
+[node name="Spawn_point5" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( 294.7, -253.751 )
+
+[node name="Spawn_point6" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( 408.63, -235.792 )
+
+[node name="Spawn_point7" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( 513.019, -209.414 )
+
+[node name="Spawn_point8" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( 593.836, -145.434 )
+
+[node name="Spawn_point9" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( 610.112, -52.2694 )
+
+[node name="Spawn_point10" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( 608.989, 58.8544 )
+
+[node name="Spawn_point11" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( 605.061, 145.284 )
+
+[node name="Spawn_point12" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( 568.019, 221.611 )
+
+[node name="Spawn_point13" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( 561.285, 308.041 )
+
+[node name="Spawn_point14" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( 561.846, 386.052 )
+
+[node name="Spawn_point15" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( 458.018, 418.603 )
+
+[node name="Spawn_point16" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( 366.537, 420.848 )
+
+[node name="Spawn_point17" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( 281.23, 418.603 )
+
+[node name="Spawn_point18" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( 185.26, 419.165 )
+
+[node name="Spawn_point19" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( 95.4629, 413.552 )
+
+[node name="Spawn_point20" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( 0.0535889, 412.43 )
+
+[node name="Spawn_point21" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( -94.2332, 391.103 )
+
+[node name="Spawn_point22" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( -186.836, 384.93 )
+
+[node name="Spawn_point23" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( -232.296, 304.112 )
+
+[node name="Spawn_point24" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( -282.807, 239.571 )
+
+[node name="Spawn_point25" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( -287.297, 163.805 )
+
+[node name="Spawn_point26" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( -297.96, 95.3344 )
+
+[node name="Spawn_point27" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( -300.205, 2.73123 )
+
+[node name="Spawn_point28" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( -312.552, -87.627 )
+
+[node name="Spawn_point29" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( -283.929, -166.761 )
+
+[node name="Spawn_point30" parent="spawn_points" instance=ExtResource( 8 )]
+position = Vector2( -228.367, -229.618 )
 
 [node name="targets" type="Node2D" parent="."]
 
 [node name="Computer" parent="targets" instance=ExtResource( 7 )]
 position = Vector2( 317.491, -21.2132 )
+frame = 1
 
 [node name="Computer2" parent="targets" instance=ExtResource( 7 )]
 position = Vector2( 258.094, -21.2132 )
+frame = 1
 
 [node name="Computer3" parent="targets" instance=ExtResource( 7 )]
 position = Vector2( 282.843, 235.113 )
+frame = 1
 
 [node name="Computer4" parent="targets" instance=ExtResource( 7 )]
 position = Vector2( 56.215, 133.643 )
+frame = 1
 
 [node name="Computer5" parent="targets" instance=ExtResource( 7 )]
 position = Vector2( 8.48529, -30.052 )
+frame = 1
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 95.7175, 269.589 )
@@ -66,4 +166,90 @@ position = Vector2( 95.7175, 269.589 )
 [node name="pu_spawn_points" type="Node2D" parent="."]
 
 [node name="Powerup_spawn_point" parent="pu_spawn_points" instance=ExtResource( 9 )]
-position = Vector2( -641.113, 30.3008 )
+position = Vector2( -146.997, 148.032 )
+
+[node name="Powerup_spawn_point2" parent="pu_spawn_points" instance=ExtResource( 9 )]
+position = Vector2( -149.829, 33.3515 )
+
+[node name="Powerup_spawn_point3" parent="pu_spawn_points" instance=ExtResource( 9 )]
+position = Vector2( 29.9789, 52.465 )
+
+[node name="Powerup_spawn_point4" parent="pu_spawn_points" instance=ExtResource( 9 )]
+position = Vector2( -19.5745, 141.661 )
+
+[node name="Powerup_spawn_point5" parent="pu_spawn_points" instance=ExtResource( 9 )]
+position = Vector2( 122.243, 139.537 )
+
+[node name="Powerup_spawn_point6" parent="pu_spawn_points" instance=ExtResource( 9 )]
+position = Vector2( -73.7574, 269.287 )
+
+[node name="Powerup_spawn_point7" parent="pu_spawn_points" instance=ExtResource( 9 )]
+position = Vector2( 52.2426, 272.537 )
+
+[node name="Powerup_spawn_point8" parent="pu_spawn_points" instance=ExtResource( 9 )]
+position = Vector2( 277.743, 325.037 )
+
+[node name="Powerup_spawn_point9" parent="pu_spawn_points" instance=ExtResource( 9 )]
+position = Vector2( 406.493, 309.287 )
+
+[node name="Powerup_spawn_point10" parent="pu_spawn_points" instance=ExtResource( 9 )]
+position = Vector2( 421.243, 162.787 )
+
+[node name="Powerup_spawn_point11" parent="pu_spawn_points" instance=ExtResource( 9 )]
+position = Vector2( 441.743, 64.2874 )
+
+[node name="Powerup_spawn_point12" parent="pu_spawn_points" instance=ExtResource( 9 )]
+position = Vector2( 458.243, -69.9626 )
+
+[node name="Powerup_spawn_point13" parent="pu_spawn_points" instance=ExtResource( 9 )]
+position = Vector2( 294.993, 70.0374 )
+
+[node name="Powerup_spawn_point14" parent="pu_spawn_points" instance=ExtResource( 9 )]
+position = Vector2( 255.743, -136.463 )
+
+[node name="Powerup_spawn_point15" parent="pu_spawn_points" instance=ExtResource( 9 )]
+position = Vector2( 106.743, -129.963 )
+
+[node name="Powerup_spawn_point16" parent="pu_spawn_points" instance=ExtResource( 9 )]
+position = Vector2( -3.50739, -201.463 )
+
+[node name="Powerup_spawn_point17" parent="pu_spawn_points" instance=ExtResource( 9 )]
+position = Vector2( -6.50739, -94.2126 )
+
+[node name="Powerup_spawn_point18" parent="pu_spawn_points" instance=ExtResource( 9 )]
+position = Vector2( -134.007, -87.7126 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="Overlay" parent="." instance=ExtResource( 10 )]
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 8.47571, -29.1353 )
+texture = ExtResource( 11 )
+color = Color( 0.486275, 0.941176, 0.780392, 1 )
+energy = 0.5
+
+[node name="Light2D2" type="Light2D" parent="."]
+position = Vector2( 259.304, -19.6001 )
+texture = ExtResource( 11 )
+color = Color( 0.486275, 0.941176, 0.780392, 1 )
+energy = 0.5
+
+[node name="Light2D3" type="Light2D" parent="."]
+position = Vector2( 317.877, -20.0974 )
+texture = ExtResource( 11 )
+color = Color( 0.486275, 0.941176, 0.780392, 1 )
+energy = 0.5
+
+[node name="Light2D4" type="Light2D" parent="."]
+position = Vector2( 283.39, 236.771 )
+texture = ExtResource( 11 )
+color = Color( 0.486275, 0.941176, 0.780392, 1 )
+energy = 0.5
+
+[node name="Light2D5" type="Light2D" parent="."]
+position = Vector2( 52.089, 135.094 )
+texture = ExtResource( 11 )
+color = Color( 0.486275, 0.941176, 0.780392, 1 )
+energy = 0.5

@@ -53,6 +53,7 @@ func _repair(delta: float):
 		if health >= 100:
 			health = 100
 			progress_bar.visible = false
+			bar.scale.x = 0
 			_infected = false
 			repair = false
 			sprite.self_modulate = Color(1, 1, 1)

@@ -23,12 +23,17 @@ animations = [ {
 polygon = PoolVector2Array( -6.9662, -2.58115, -2.7114, -6.91938, 8.05075, -6.96109, 8.09246, 3.55077, 5.00565, 7.05473, -7.00791, 7.17987 )
 
 [node name="Computer" type="AnimatedSprite"]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
 frames = SubResource( 3 )
+playing = true
 
 [node name="Target" parent="." instance=ExtResource( 1 )]
 
 [node name="CollisionShape2D" parent="Target" index="0"]
 position = Vector2( 0.4188, -0.0837517 )
+
+[node name="CollisionShape2D" parent="Target/StaticBody2D" index="0"]
+position = Vector2( 0.45883, 0.00512505 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource( 4 )

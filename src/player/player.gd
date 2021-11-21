@@ -78,6 +78,7 @@ func shoot(delta: float, rate: float, spread: float, amount: int, color = null):
 		$AnimatedSprite/muzzle_flash.visible = false
 		$AnimatedSprite/muzzle_flash_light.visible = false
 
+var play_footstep = false
 
 func movement():
 	if shooting:
@@ -103,6 +104,13 @@ func movement():
 		movement_direction.x = 1
 		rotate = 0
 		is_moving = true
+		
+	if is_moving and not play_footstep:
+		play_footstep = true
+		$footsteps.play()
+	elif not is_moving:
+		play_footstep = false
+		$footsteps.stop()
 	
 	if is_moving and not shooting:
 		$AnimatedSprite.rotation_degrees = rotate
