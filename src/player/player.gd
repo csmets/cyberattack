@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export (int) var speed = 500
+export (int) var speed = 200
 
 onready var bullet = preload("res://src/bullet/bullet.tscn")
 
@@ -70,7 +70,7 @@ func shoot(delta: float, rate: float, spread: float, amount: int, color = null):
 			if color != null:
 				bullet_instance.modulate = color
 			
-		Game_data.camera.shake(15)
+		Game_data.camera.shake(1.4)
 		$AnimatedSprite/muzzle_flash.visible = true
 		$AnimatedSprite.play("shoot")
 		$AnimatedSprite/muzzle_flash_light.visible = true

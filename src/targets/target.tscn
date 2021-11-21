@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/sounds/Buff 2.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 19.7277, 13.4841 )
+extents = Vector2( 8.46665, 8.14507 )
 
 [sub_resource type="Gradient" id=2]
 colors = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1 )
@@ -23,7 +23,7 @@ gradient = SubResource( 4 )
 width = 1
 
 [sub_resource type="CircleShape2D" id=6]
-radius = 32.9511
+radius = 19.5914
 
 [node name="Target" type="Area2D" groups=["target"]]
 script = ExtResource( 1 )

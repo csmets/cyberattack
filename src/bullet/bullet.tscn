@@ -19,6 +19,7 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 2 )
 rotation = 1.57128
+scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 198, 46, 4, 10 )
@@ -33,6 +34,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2( 0.2, 0.2 )
 shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
