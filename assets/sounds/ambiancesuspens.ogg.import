@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ambiancesuspens.ogg-7d7b6bfd5a8d6a4b737abf3fd1968afc.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/ambiancesuspens.ogg"
+dest_files=[ "res://.import/ambiancesuspens.ogg-7d7b6bfd5a8d6a4b737abf3fd1968afc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

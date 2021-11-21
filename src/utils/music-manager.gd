@@ -8,7 +8,9 @@ func _ready():
 
 func play_interval(value):
 	$wave_music.stop()
+	$interval_music.play()
 
 
 func play_wave(value):
 	$wave_music.play()
+	$interval_music.stop()

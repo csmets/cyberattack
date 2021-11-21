@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/enemyFloating_1.png-f7f627245d63e5aefd0e9e0329a4887f.stex"
+path="res://.import/player_run_strip-export.png-4dd957c5c502b4ef3d4ab073594abf9d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/enemy/resources/enemyFloating_1.png"
-dest_files=[ "res://.import/enemyFloating_1.png-f7f627245d63e5aefd0e9e0329a4887f.stex" ]
+source_file="res://src/player/resources/player_run_strip-export.png"
+dest_files=[ "res://.import/player_run_strip-export.png-4dd957c5c502b4ef3d4ab073594abf9d.stex" ]
 
 [params]
 

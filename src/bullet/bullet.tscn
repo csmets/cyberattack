@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/onlyObjects_default.png" type="Texture" id=1]
 [ext_resource path="res://src/bullet/bullet.gd" type="Script" id=2]
 [ext_resource path="res://assets/sounds/Sci Fi Machine Gun 3.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/sounds/Rocks 8.wav" type="AudioStream" id=4]
@@ -10,6 +9,12 @@
 [sub_resource type="CanvasItemMaterial" id=2]
 blend_mode = 1
 
+[sub_resource type="Gradient" id=4]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 5.14864, 1.93633 )
 
@@ -17,9 +22,11 @@ extents = Vector2( 5.14864, 1.93633 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
 material = SubResource( 2 )
 rotation = 1.57128
-texture = ExtResource( 1 )
+scale = Vector2( 0.2, 0.2 )
+texture = SubResource( 5 )
 region_enabled = true
 region_rect = Rect2( 198, 46, 4, 10 )
 
@@ -33,6 +40,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2( 0.2, 0.2 )
 shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]

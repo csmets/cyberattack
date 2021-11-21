@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/targets/target.gd" type="Script" id=1]
 [ext_resource path="res://assets/sounds/Health Pickup 1.wav" type="AudioStream" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/sounds/Buff 2.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 19.7277, 13.4841 )
+extents = Vector2( 8.46665, 8.14507 )
 
 [sub_resource type="Gradient" id=2]
 colors = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1 )
@@ -23,7 +23,10 @@ gradient = SubResource( 4 )
 width = 1
 
 [sub_resource type="CircleShape2D" id=6]
-radius = 32.9511
+radius = 23.8402
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 7.50848, 7.04963 )
 
 [node name="Target" type="Area2D" groups=["target"]]
 script = ExtResource( 1 )
@@ -55,6 +58,11 @@ stream = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="healing_zone"]
 shape = SubResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 7 )
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="healing_zone" to="." method="_on_healing_zone_body_entered"]
