@@ -7,6 +7,7 @@ signal spawn_enemies
 signal update_shoot(values)
 signal spawn_powerups
 signal Infect
+signal game_over
 
 var wave_count = 0 setget set_wave_count
 var infected_count = 0 setget set_infected_count
@@ -44,6 +45,10 @@ func trigger_enemies():
 
 func trigger_infect():
 	emit_signal("Infect")
+
+
+func game_over():
+	emit_signal("game_over")
 
 
 func set_shoot_values(value: Dictionary):

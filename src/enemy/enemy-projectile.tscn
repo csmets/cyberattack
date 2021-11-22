@@ -35,6 +35,8 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
+frame = 1
+playing = true
 
 [node name="Enemy_movement" parent="." instance=ExtResource( 3 )]
 speed = 50
