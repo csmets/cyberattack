@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/enemyFloating_1.png-f7f627245d63e5aefd0e9e0329a4887f.stex"
+path="res://.import/virus-large.png-34ebb504bd78ad50abc01bb73213ba3c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/enemy/resources/enemyFloating_1.png"
-dest_files=[ "res://.import/enemyFloating_1.png-f7f627245d63e5aefd0e9e0329a4887f.stex" ]
+source_file="res://src/enemy/resources/virus-large.png"
+dest_files=[ "res://.import/virus-large.png-34ebb504bd78ad50abc01bb73213ba3c.stex" ]
 
 [params]
 

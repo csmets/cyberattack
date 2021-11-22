@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/enemy/resources/virus-projectile.png" type="Texture" id=1]
+[ext_resource path="res://src/enemy/enemy-projectile.gd" type="Script" id=2]
+[ext_resource path="res://src/enemy/enemy-movement.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4.08795, 4.06709 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 8, 0, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Enemy_projectile" type="Area2D" groups=["enemy"]]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.0631237, -0.0411491 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+
+[node name="Enemy_movement" parent="." instance=ExtResource( 3 )]
+speed = 50
+instant_spawn = true
+enemy = NodePath("..")
+
+[connection signal="area_entered" from="." to="." method="_on_Enemy_projectile_area_entered"]

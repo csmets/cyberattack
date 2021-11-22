@@ -1,6 +1,8 @@
 extends Node2D
 
 onready var enemy = preload("res://src/enemy/enemy.tscn")
+onready var enemy_breakable = preload("res://src/enemy/breakable-enemy.tscn")
+onready var enemy_spawner = preload("res://src/enemy/enemy-spawner.tscn")
 
 var wave_multiplier = 3
 var wave_time = 15 #seconds
@@ -48,6 +50,14 @@ func spawn_position() -> Vector2:
 
 
 func spawn_enemy(position: Vector2):
-	var instance = enemy.instance()
+	var enemy_type = rng.randi_range(1, 3)
+	var instance
+	match(enemy_type):
+		1:
+			instance = enemy.instance()
+		2:
+			instance = enemy_breakable.instance()
+		3:
+			instance = enemy_spawner.instance()
 	get_tree().root.add_child(instance)
 	instance.position = position

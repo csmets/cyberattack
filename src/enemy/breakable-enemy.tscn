@@ -1,0 +1,174 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://src/enemy/resources/virus-large.png" type="Texture" id=1]
+[ext_resource path="res://src/enemy/breakable-enemy.gd" type="Script" id=2]
+[ext_resource path="res://src/enemy/enemy-movement.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 12.0082, 11.0258 )
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 144, 0, 24, 24 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 144, 24, 24, 24 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 1 )
+region = Rect2( 24, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 1 )
+region = Rect2( 72, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 1 )
+region = Rect2( 120, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 168, 24, 24, 24 )
+
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 1 )
+region = Rect2( 24, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 1 )
+region = Rect2( 72, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 1 )
+region = Rect2( 120, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 1 )
+region = Rect2( 168, 0, 24, 24 )
+
+[sub_resource type="SpriteFrames" id=20]
+animations = [ {
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Breakable_enemy" type="Node2D"]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
+script = ExtResource( 2 )
+
+[node name="p1_area" type="Area2D" parent="." groups=["enemy"]]
+position = Vector2( -12, -12 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="p1_area"]
+position = Vector2( -0.4375, 0.434587 )
+shape = SubResource( 21 )
+
+[node name="p1" type="AnimatedSprite" parent="p1_area"]
+frames = SubResource( 5 )
+frame = 3
+playing = true
+
+[node name="p2_area" type="Area2D" parent="." groups=["enemy"]]
+position = Vector2( -12, 10 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="p2_area"]
+position = Vector2( -0.4375, 1.55959 )
+shape = SubResource( 21 )
+
+[node name="p2" type="AnimatedSprite" parent="p2_area"]
+position = Vector2( 0, 2 )
+frames = SubResource( 10 )
+frame = 1
+playing = true
+
+[node name="p3_area" type="Area2D" parent="." groups=["enemy"]]
+position = Vector2( 11.9598, 9.99413 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="p3_area"]
+position = Vector2( 0.375, 1.56545 )
+shape = SubResource( 21 )
+
+[node name="p3" type="AnimatedSprite" parent="p3_area"]
+position = Vector2( 0, 2 )
+frames = SubResource( 15 )
+playing = true
+
+[node name="p4_area" type="Area2D" parent="." groups=["enemy"]]
+position = Vector2( 11.9598, -12.0141 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="p4_area"]
+position = Vector2( 0.375, 0.448736 )
+shape = SubResource( 21 )
+
+[node name="p4" type="AnimatedSprite" parent="p4_area"]
+frames = SubResource( 20 )
+frame = 3
+playing = true
+
+[node name="Enemy_movement" parent="." instance=ExtResource( 3 )]
+enemy = NodePath("..")
+
+[connection signal="destroy" from="." to="." method="_on_Breakable_enemy_destroy"]
+[connection signal="area_entered" from="p1_area" to="." method="_on_p1_area_area_entered"]
+[connection signal="area_entered" from="p2_area" to="." method="_on_p2_area_area_entered"]
+[connection signal="area_entered" from="p3_area" to="." method="_on_p3_area_area_entered"]
+[connection signal="area_entered" from="p4_area" to="." method="_on_p4_area_area_entered"]

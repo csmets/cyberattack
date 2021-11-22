@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/96x96 - LargeBombStaticFrame3.png-16db94c0fb9a8ef3b132e05b236a241a.stex"
+path="res://.import/virus-spawner.png-d15cd2361838c1f4711442d9b79135a3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/enemy/resources/96x96 - LargeBombStaticFrame3.png"
-dest_files=[ "res://.import/96x96 - LargeBombStaticFrame3.png-16db94c0fb9a8ef3b132e05b236a241a.stex" ]
+source_file="res://src/enemy/resources/virus-spawner.png"
+dest_files=[ "res://.import/virus-spawner.png-d15cd2361838c1f4711442d9b79135a3.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
