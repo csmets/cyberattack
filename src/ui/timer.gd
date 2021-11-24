@@ -1,4 +1,4 @@
-extends Label
+extends Control
 
 var start = false
 var time = 0
@@ -6,11 +6,13 @@ var score = 0
 
 func _ready():
 	Game_data.connect("countdown", self, "start_countdown")
+	self.visible = false
 
 
 func start_countdown(length: float):
 	time = length
 	start = true
+	self.visible = true
 
 
 func _process(delta):
@@ -18,6 +20,7 @@ func _process(delta):
 		start = false
 		Game_data.trigger_enemies()
 		reset()
+		self.visible = false
 	
 	if start:
 		time -= delta
@@ -29,7 +32,7 @@ func _process(delta):
 	var time_passed = "%02d:%02d:%03d" % [mins, secs, mils]
 	var score_str = "%02d%02d%03d" % [mins, secs, mils]
 	
-	self.text = time_passed
+	$Timer.text = time_passed
 
 
 func start() -> void:

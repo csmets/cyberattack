@@ -143,18 +143,23 @@ position = Vector2( -228.367, -229.618 )
 
 [node name="Computer" parent="targets" instance=ExtResource( 7 )]
 position = Vector2( 317.491, -21.2132 )
+frame = 1
 
 [node name="Computer2" parent="targets" instance=ExtResource( 7 )]
 position = Vector2( 258.094, -21.2132 )
+frame = 1
 
 [node name="Computer3" parent="targets" instance=ExtResource( 7 )]
 position = Vector2( 282.843, 235.113 )
+frame = 1
 
 [node name="Computer5" parent="targets" instance=ExtResource( 7 )]
 position = Vector2( 8.48529, -30.052 )
+frame = 1
 
 [node name="Super_computer" parent="targets" instance=ExtResource( 12 )]
 position = Vector2( 54, 138.25 )
+frame = 0
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 95.7175, 269.589 )

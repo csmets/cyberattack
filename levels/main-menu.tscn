@@ -1,0 +1,204 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/displace.png" type="Texture" id=2]
+[ext_resource path="res://assets/font/C64.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://levels/main-menu.gd" type="Script" id=4]
+
+[sub_resource type="Shader" id=8]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform sampler2D displace : hint_albedo;
+uniform float dispAmt: hint_range(0,0.1);
+uniform float abberationAmtX: hint_range(0,0.1);
+uniform float abberationAmtY: hint_range(0,0.1);
+uniform float dispSize: hint_range(0.1, 2.0);
+uniform float maxAlpha : hint_range(0.1,1.0);
+
+void fragment()
+{
+	//displace effect
+	vec4 disp = texture(displace, SCREEN_UV * dispSize);
+	vec2 newUV = SCREEN_UV + disp.xy * dispAmt;
+	//abberation
+	COLOR.r = texture(SCREEN_TEXTURE, newUV - vec2(abberationAmtX,abberationAmtY)).r; 
+	COLOR.g = texture(SCREEN_TEXTURE, newUV).g; 
+	COLOR.b = texture(SCREEN_TEXTURE, newUV + vec2(abberationAmtX,abberationAmtY)).b;
+	COLOR.a = texture(SCREEN_TEXTURE, newUV).a * maxAlpha;
+}"
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 8 )
+shader_param/dispAmt = 0.009
+shader_param/abberationAmtX = 0.004
+shader_param/abberationAmtY = 0.005
+shader_param/dispSize = 0.1
+shader_param/maxAlpha = 0.178
+shader_param/displace = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 62
+font_data = ExtResource( 3 )
+
+[node name="Main_menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -319.294, -177.428 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+material = SubResource( 9 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 640.0
+margin_bottom = 360.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 171.0
+margin_top = 117.0
+margin_right = 468.0
+margin_bottom = 243.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+margin_right = 297.0
+margin_bottom = 46.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer"]
+margin_right = 297.0
+margin_bottom = 46.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+text = "CYBERATTACK"
+
+[node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 50.0
+margin_right = 297.0
+margin_bottom = 126.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2"]
+margin_left = 113.0
+margin_right = 184.0
+margin_bottom = 76.0
+
+[node name="PlayContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_right = 71.0
+margin_bottom = 16.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/PlayContainer"]
+margin_right = 71.0
+margin_bottom = 16.0
+
+[node name="Selector" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/PlayContainer/HBoxContainer"]
+margin_top = 2.0
+margin_right = 7.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 7, 0 )
+theme = ExtResource( 1 )
+text = ">"
+
+[node name="Play_btn" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/PlayContainer/HBoxContainer"]
+margin_left = 11.0
+margin_right = 71.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 60, 0 )
+theme = ExtResource( 1 )
+text = "Play"
+
+[node name="OptionsContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 20.0
+margin_right = 71.0
+margin_bottom = 36.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/OptionsContainer"]
+margin_right = 71.0
+margin_bottom = 16.0
+
+[node name="Selector" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/OptionsContainer/HBoxContainer"]
+margin_top = 2.0
+margin_right = 7.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 7, 0 )
+theme = ExtResource( 1 )
+text = ">"
+
+[node name="Options_btn" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/OptionsContainer/HBoxContainer"]
+margin_left = 11.0
+margin_right = 71.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 60, 0 )
+theme = ExtResource( 1 )
+text = "Options"
+
+[node name="CreditsContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 40.0
+margin_right = 71.0
+margin_bottom = 56.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CreditsContainer"]
+margin_right = 71.0
+margin_bottom = 16.0
+
+[node name="Selector" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CreditsContainer/HBoxContainer"]
+margin_top = 2.0
+margin_right = 7.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 7, 0 )
+theme = ExtResource( 1 )
+text = ">"
+
+[node name="Credits_btn" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CreditsContainer/HBoxContainer"]
+margin_left = 11.0
+margin_right = 71.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 60, 0 )
+theme = ExtResource( 1 )
+text = "Credits"
+
+[node name="QuitContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 60.0
+margin_right = 71.0
+margin_bottom = 76.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/QuitContainer"]
+margin_right = 71.0
+margin_bottom = 16.0
+
+[node name="Selector" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/QuitContainer/HBoxContainer"]
+margin_top = 2.0
+margin_right = 7.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 7, 0 )
+theme = ExtResource( 1 )
+text = ">"
+
+[node name="Quit_btn" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/QuitContainer/HBoxContainer"]
+margin_left = 11.0
+margin_right = 71.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 60, 0 )
+theme = ExtResource( 1 )
+text = "Quit"
+
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/PlayContainer/HBoxContainer/Play_btn" to="." method="_on_Play_btn_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/PlayContainer/HBoxContainer/Play_btn" to="." method="_on_Play_btn_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/OptionsContainer/HBoxContainer/Options_btn" to="." method="_on_Options_btn_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/OptionsContainer/HBoxContainer/Options_btn" to="." method="_on_Options_btn_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CreditsContainer/HBoxContainer/Credits_btn" to="." method="_on_Credits_btn_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CreditsContainer/HBoxContainer/Credits_btn" to="." method="_on_Credits_btn_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/QuitContainer/HBoxContainer/Quit_btn" to="." method="_on_Quit_btn_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/QuitContainer/HBoxContainer/Quit_btn" to="." method="_on_Quit_btn_pressed"]

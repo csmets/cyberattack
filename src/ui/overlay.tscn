@@ -1,10 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/ui/overlay.gd" type="Script" id=1]
 [ext_resource path="res://src/ui/timer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/displace.png" type="Texture" id=3]
+[ext_resource path="res://assets/theme.tres" type="Theme" id=4]
+[ext_resource path="res://assets/font/C64.ttf" type="DynamicFontData" id=5]
 
-[sub_resource type="Shader" id=3]
+[sub_resource type="DynamicFont" id=7]
+size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="Shader" id=8]
 code = "shader_type canvas_item;
 render_mode unshaded;
 
@@ -28,7 +34,7 @@ void fragment()
 }"
 
 [sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
+shader = SubResource( 8 )
 shader_param/dispAmt = 0.009
 shader_param/abberationAmtX = 0.004
 shader_param/abberationAmtY = 0.005
@@ -79,8 +85,11 @@ __meta__ = {
 [node name="wave" type="Label" parent="Control2"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -14.0
-margin_right = 51.0
+margin_left = 7.76776
+margin_top = -18.929
+margin_right = 49.7678
+margin_bottom = -3.92896
+theme = ExtResource( 4 )
 text = "Wave: 0"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -91,9 +100,12 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -164.0
-margin_top = -14.0
-text = "No. of deviced infected: 0"
+margin_left = -127.735
+margin_top = -18.929
+margin_right = -13.7347
+margin_bottom = -3.92896
+theme = ExtResource( 4 )
+text = "Devices infected: 0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -103,30 +115,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -38.5
-margin_top = -7.0
-margin_right = 38.5
-margin_bottom = 7.0
-text = "Game Over!"
+margin_left = -67.5
+margin_top = -15.0
+margin_right = 67.5
+margin_bottom = 15.0
+theme = ExtResource( 4 )
+custom_fonts/font = SubResource( 7 )
+text = "GAME OVER"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Timer" parent="Control2" instance=ExtResource( 2 )]
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -28.0
-margin_top = -14.0
-margin_right = 28.0
-margin_bottom = 0.0
-text = "00:00:00"
+margin_left = -24.0
+margin_top = 15.0
+margin_right = 24.0
+margin_bottom = 30.0
 
 [node name="Control" type="CanvasLayer" parent="Control2"]
 
 [node name="ColorRect" type="ColorRect" parent="Control2/Control"]
+visible = false
 material = SubResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
