@@ -107,12 +107,14 @@ animation = "idle"
 position = Vector2( 17.1743, 2.02109 )
 
 [node name="muzzle_flash" type="Sprite" parent="AnimatedSprite"]
+visible = false
 position = Vector2( 18.6817, 1.34845 )
 scale = Vector2( 0.591923, 0.57191 )
 texture = ExtResource( 3 )
 region_rect = Rect2( 370, 0, 8, 26 )
 
 [node name="muzzle_flash_light" type="Light2D" parent="AnimatedSprite"]
+visible = false
 position = Vector2( 127.861, 4.45097 )
 scale = Vector2( 2.58657, 1.44866 )
 texture = ExtResource( 6 )

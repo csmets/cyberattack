@@ -35,10 +35,6 @@ func _process(delta):
 	$Timer.text = time_passed
 
 
-func start() -> void:
-	start = true
-
-
 func pause() -> void:
 	start = false
 

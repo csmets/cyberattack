@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Cyberattack"
-run/main_scene="res://levels/level-1.tscn"
+run/main_scene="res://levels/main-menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

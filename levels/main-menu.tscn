@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/displace.png" type="Texture" id=2]
@@ -40,6 +40,37 @@ shader_param/displace = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=1]
 size = 62
 font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/ColorRect:material:shader_param/dispSize")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.1 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "glitch"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/ColorRect:material:shader_param/dispSize")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.1, 0.495, 0.1 ]
+}
 
 [node name="Main_menu" type="Control"]
 anchor_right = 1.0
@@ -193,6 +224,11 @@ margin_bottom = 16.0
 rect_min_size = Vector2( 60, 0 )
 theme = ExtResource( 1 )
 text = "Quit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "glitch"
+anims/RESET = SubResource( 10 )
+anims/glitch = SubResource( 11 )
 
 [connection signal="mouse_entered" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/PlayContainer/HBoxContainer/Play_btn" to="." method="_on_Play_btn_mouse_entered"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/PlayContainer/HBoxContainer/Play_btn" to="." method="_on_Play_btn_pressed"]

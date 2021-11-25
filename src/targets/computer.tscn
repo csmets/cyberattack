@@ -60,6 +60,7 @@ shape = SubResource( 6 )
 position = Vector2( 0.372581, 0.229066 )
 shape = SubResource( 7 )
 
+[connection signal="healed" from="Target" to="." method="_on_Target_healed"]
 [connection signal="body_entered" from="heal_zone" to="." method="_on_heal_zone_body_entered"]
 [connection signal="body_exited" from="heal_zone" to="." method="_on_heal_zone_body_exited"]
 [connection signal="area_entered" from="hit_zone" to="." method="_on_hit_zone_area_entered"]

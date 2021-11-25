@@ -1,0 +1,128 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/font/C64.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/characters/Masculine_A/Hair_A_masculine_A-base.png" type="Texture" id=2]
+[ext_resource path="res://assets/theme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/characters/Accessories/Glasses_C.png" type="Texture" id=4]
+[ext_resource path="res://assets/characters/Masculine_A/Masculine_A_default.png" type="Texture" id=5]
+[ext_resource path="res://src/ui/dialogue-system.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 579, 88.0865 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "next"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 579, 88.0865 ), Vector2( 579, 91 ), Vector2( 579, 88.0865 ) ]
+}
+
+[node name="Dialogue_system" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialogue_box" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -293.5
+margin_top = -129.0
+margin_right = 293.5
+margin_bottom = -24.0
+color = Color( 0.137255, 0.286275, 0.364706, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="RichTextLabel" parent="Dialogue_box"]
+margin_left = 7.0
+margin_top = 3.0
+margin_right = 250.0
+margin_bottom = 31.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialogue" type="RichTextLabel" parent="Dialogue_box"]
+margin_left = 7.0
+margin_top = 38.0
+margin_right = 579.0
+margin_bottom = 91.0
+theme = ExtResource( 3 )
+text = "Some text here"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Character" type="Node2D" parent="Dialogue_box"]
+modulate = Color( 0.333333, 0.768627, 1, 1 )
+position = Vector2( 48.4533, -71.1939 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="Sprite" type="Sprite" parent="Dialogue_box/Character"]
+texture = ExtResource( 5 )
+
+[node name="Sprite2" type="Sprite" parent="Dialogue_box/Character"]
+texture = ExtResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="Dialogue_box/Character"]
+texture = ExtResource( 4 )
+
+[node name="Timer" type="Timer" parent="Dialogue_box"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dialogue_box"]
+root_node = NodePath("../Next")
+autoplay = "next"
+anims/RESET = SubResource( 2 )
+anims/next = SubResource( 3 )
+
+[node name="Next" type="Label" parent="Dialogue_box"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 579.0
+margin_top = 88.0865
+margin_right = 619.0
+margin_bottom = 102.086
+rect_rotation = 90.0
+theme = ExtResource( 3 )
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}

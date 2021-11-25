@@ -3,6 +3,7 @@ extends CanvasLayer
 var play_glitch = false
 
 func _ready():
+	$Control2.visible = true
 	$Control2/game_over.visible = false
 	$Control2/Control/ColorRect.visible = false
 	
@@ -10,12 +11,10 @@ func _ready():
 	Game_data.connect("Wave_updated", self, "update_wave_count")
 	Game_data.connect("Infect", self, "play_glitch")
 	Game_data.connect("game_over", self, "game_over")
-	
-	$Control2/Timer.start()
 
 
 func update_infected_count(value: int):
-	$Control2/infected.text = "No. of deviced infected: %s" % value
+	$Control2/infected.text = "Deviced infected: %s" % value
 
 
 func play_glitch():
@@ -25,7 +24,7 @@ func play_glitch():
 
 
 func update_wave_count(value: int):
-	$Control2/wave.text = "Wave: %s" % value
+	$Control2/wave.text = "Wave: %s/%s" % [value, Game_data.max_wave]
 
 
 func game_over():

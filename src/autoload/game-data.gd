@@ -8,8 +8,10 @@ signal update_shoot(values)
 signal spawn_powerups
 signal Infect
 signal game_over
+signal level_complete
 
 var wave_count = 0 setget set_wave_count
+var max_wave = 0
 var infected_count = 0 setget set_infected_count
 var shoot_values = {
 	"color": Color(0, 0, 0),
@@ -49,6 +51,10 @@ func trigger_infect():
 
 func game_over():
 	emit_signal("game_over")
+
+
+func level_complete():
+	emit_signal("level_complete")
 
 
 func set_shoot_values(value: Dictionary):
