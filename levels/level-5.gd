@@ -7,24 +7,26 @@ var start_level = false
 
 func _ready():
 	Game_data.connect("level_complete", self, "level_completed")
+	
+func _on_Dialogue_system_finished_dialogue():
+	$scene_manager.visible = true
+	if final_dialogue:
+		get_tree().change_scene("res://levels/level-2.tscn")
+	if start_level:
+		Game_data.start_countdown(5)
 
 
 func _on_Level_intro_end_level_intro():
 	var value = [
 		{
 			"Name": "Bob",
-			"Emotion": "Sad",
-			"Text": "You've made it! We've been under attack by a new virus."
+			"Emotion": "Default",
+			"Text": "I've gotten intel that a new virus is out to target us."
 		},
 		{
 			"Name": "Bob",
 			"Emotion": "Default",
-			"Text": "We have a lot of personal data in this facility which makes this place a high target."
-		},
-		{
-			"Name": "Bob",
-			"Emotion": "Default",
-			"Text": "Please help stop the oncoming waves of attacks. Be careful!"
+			"Text": "I wish you best of luck!"
 		}
 	]
 	$CanvasLayer/Dialogue_system.set_dialogue(value)
@@ -36,20 +38,13 @@ func level_completed():
 		{
 			"Name": "Roger",
 			"Emotion": "Happy",
-			"Text": "Finally, it's over.."
+			"Text": "You...you did it!!"
 		},
 		{
 			"Name": "Roger",
 			"Emotion": "Default",
-			"Text": "We need your help at another facility which requires attention to our super computers."
+			"Text": "You know the drill...see you at the next facility."
 		}
 	]
 	final_dialogue = true
 	dialogue_system.set_dialogue(level_complete_dialogue)
-
-
-func _on_Dialogue_system_finished_dialogue():
-	if final_dialogue:
-		get_tree().change_scene("res://levels/level-4.tscn")
-	if start_level:
-		Game_data.start_countdown(5)

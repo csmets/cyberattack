@@ -14,6 +14,8 @@ var spawn_points: Array = []
 var wave = 0
 var trigger_next_wave = false
 var start = false
+var end_level_delay = 2 #seconds
+var end_delay_timer = Delta_Timer.new()
 
 var rng = RandomNumberGenerator.new()
 
@@ -35,7 +37,8 @@ func _physics_process(delta):
 	
 	if start and number_of_enemies <= 0 and not trigger_next_wave:
 		if wave == _wave_length:
-			Game_data.level_complete()
+			if end_delay_timer.timer(delta, end_level_delay):
+				Game_data.level_complete()
 		else:
 			trigger_next_wave = true
 			next_wave()

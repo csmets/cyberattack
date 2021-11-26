@@ -35,7 +35,6 @@ extents = Vector2( 29.5365, 13.612 )
 [node name="Super_computer" type="AnimatedSprite"]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 script = ExtResource( 3 )
 

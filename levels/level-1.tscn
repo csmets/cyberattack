@@ -46,14 +46,17 @@ position = Vector2( 145.903, 79.6873 )
 
 [node name="Computer" parent="." instance=ExtResource( 7 )]
 position = Vector2( 230.853, 95.7412 )
+frame = 1
 infect = true
 
 [node name="Computer3" parent="." instance=ExtResource( 7 )]
 visible = false
 position = Vector2( 230.853, 95.7412 )
+frame = 1
 
 [node name="Computer2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 37.2359, 100.774 )
+frame = 1
 
 [node name="spawn_points" type="Node2D" parent="."]
 
