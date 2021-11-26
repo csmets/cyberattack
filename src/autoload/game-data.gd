@@ -60,3 +60,8 @@ func level_complete():
 func set_shoot_values(value: Dictionary):
 	shoot_values = value
 	emit_signal("update_shoot", value)
+	
+
+func reset():
+	wave_count = 0
+	infected_count = 0

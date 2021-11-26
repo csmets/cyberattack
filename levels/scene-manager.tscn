@@ -24,7 +24,10 @@ script = ExtResource( 1 )
 
 [node name="Music_manager" parent="." instance=ExtResource( 9 )]
 
+[node name="Overlay" parent="." instance=ExtResource( 6 )]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 
-[node name="Overlay" parent="." instance=ExtResource( 6 )]
+[connection signal="main_menu" from="Overlay" to="." method="_on_Overlay_main_menu"]
+[connection signal="retry" from="Overlay" to="." method="_on_Overlay_retry"]

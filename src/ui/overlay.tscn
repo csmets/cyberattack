@@ -39,14 +39,14 @@ shader = SubResource( 8 )
 shader_param/dispAmt = 0.009
 shader_param/abberationAmtX = 0.004
 shader_param/abberationAmtY = 0.005
-shader_param/dispSize = 0.1
+shader_param/dispSize = 0.373
 shader_param/maxAlpha = 0.587
 shader_param/displace = ExtResource( 3 )
 
 [sub_resource type="Animation" id=5]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("ColorRect:material:shader_param/dispSize")
+tracks/0/path = NodePath("../../ColorRect:material:shader_param/dispSize")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -61,7 +61,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=6]
 resource_name = "displace"
 tracks/0/type = "value"
-tracks/0/path = NodePath("ColorRect:material:shader_param/dispSize")
+tracks/0/path = NodePath("../../ColorRect:material:shader_param/dispSize")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -74,10 +74,11 @@ tracks/0/keys = {
 }
 
 [node name="Overlay" type="CanvasLayer"]
+pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="Control2" type="Control" parent="."]
-visible = false
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -112,15 +113,40 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="game_over" type="Label" parent="Control2"]
+[node name="Timer" parent="Control2" instance=ExtResource( 2 )]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -67.5
-margin_top = -15.0
-margin_right = 67.5
-margin_bottom = 15.0
+margin_left = -24.0
+margin_top = 15.0
+margin_right = 24.0
+margin_bottom = 30.0
+
+[node name="Powerup_UI" parent="Control2" instance=ExtResource( 6 )]
+anchor_left = 1.0
+anchor_bottom = 0.0
+margin_left = -41.8575
+margin_top = 15.0
+margin_right = -9.85754
+margin_bottom = 47.0
+
+[node name="game_over" type="CenterContainer" parent="."]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="game_over"]
+margin_left = 258.0
+margin_top = 148.0
+margin_right = 382.0
+margin_bottom = 212.0
+
+[node name="label" type="Label" parent="game_over/VBoxContainer"]
+margin_right = 124.0
+margin_bottom = 24.0
 theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 7 )
 text = "GAME OVER"
@@ -130,33 +156,98 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Timer" parent="Control2" instance=ExtResource( 2 )]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -24.0
-margin_top = 15.0
-margin_right = 24.0
-margin_bottom = 30.0
+[node name="Retry" type="Button" parent="game_over/VBoxContainer"]
+margin_top = 28.0
+margin_right = 124.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 70, 0 )
+theme = ExtResource( 4 )
+text = "Retry"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Control" type="CanvasLayer" parent="Control2"]
+[node name="Main_menu" type="Button" parent="game_over/VBoxContainer"]
+margin_top = 48.0
+margin_right = 124.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 70, 0 )
+theme = ExtResource( 4 )
+text = "Main menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="ColorRect" type="ColorRect" parent="Control2/Control"]
+[node name="Glitch" type="ColorRect" parent="."]
 visible = false
 material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
+anims/RESET = SubResource( 5 )
+anims/displace = SubResource( 6 )
+
+[node name="Pause" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control2/Control"]
-anims/RESET = SubResource( 5 )
-anims/displace = SubResource( 6 )
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause"]
+margin_left = 278.0
+margin_top = 138.0
+margin_right = 362.0
+margin_bottom = 222.0
 
-[node name="Powerup_UI" parent="Control2" instance=ExtResource( 6 )]
-anchor_left = 1.0
-anchor_bottom = 0.0
-margin_left = -41.8575
-margin_top = 15.0
-margin_right = -9.85754
-margin_bottom = 47.0
+[node name="Label" type="Label" parent="Pause/VBoxContainer"]
+margin_right = 84.0
+margin_bottom = 24.0
+theme = ExtResource( 4 )
+custom_fonts/font = SubResource( 7 )
+text = "PAUSED"
+
+[node name="Continue" type="Button" parent="Pause/VBoxContainer"]
+margin_top = 28.0
+margin_right = 84.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 70, 0 )
+theme = ExtResource( 4 )
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Retry" type="Button" parent="Pause/VBoxContainer"]
+margin_top = 48.0
+margin_right = 84.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 70, 0 )
+theme = ExtResource( 4 )
+text = "Retry"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main_menu" type="Button" parent="Pause/VBoxContainer"]
+margin_top = 68.0
+margin_right = 84.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 70, 0 )
+theme = ExtResource( 4 )
+text = "Main menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="game_over/VBoxContainer/Retry" to="." method="_on_Retry_pressed"]
+[connection signal="pressed" from="game_over/VBoxContainer/Main_menu" to="." method="_on_Main_menu_pressed"]
+[connection signal="pressed" from="Pause/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="Pause/VBoxContainer/Retry" to="." method="_on_pause_Retry_pressed"]
+[connection signal="pressed" from="Pause/VBoxContainer/Main_menu" to="." method="_on_pause_Main_menu_pressed"]

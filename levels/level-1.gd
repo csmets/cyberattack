@@ -7,7 +7,6 @@ var computer_healed = false
 
 func _ready():
 	Game_data.connect("level_complete", self, "level_completed")
-	$scene_manager.visible = false
 
 
 func _on_Computer_healed():

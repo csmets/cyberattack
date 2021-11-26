@@ -15,6 +15,7 @@
 script = ExtResource( 2 )
 
 [node name="scene_manager" parent="." instance=ExtResource( 5 )]
+retry_scene = "res://levels/level-3.tscn"
 wave_length = 8
 enemies = 2
 

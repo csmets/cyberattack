@@ -75,5 +75,5 @@ func spawn_enemy(position: Vector2):
 			instance = enemy_breakable.instance()
 		3:
 			instance = enemy_spawner.instance()
-	get_tree().root.add_child(instance)
+	add_child(instance)
 	instance.position = position
