@@ -7,6 +7,7 @@
 texture = ExtResource( 2 )
 
 [node name="powerup_manager" parent="." instance=ExtResource( 1 )]
+type = "Multi"
 color = Color( 1, 0.701961, 0.670588, 1 )
 rate = 0.2
 spread = 30.0

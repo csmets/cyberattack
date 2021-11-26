@@ -3,7 +3,7 @@ extends CanvasLayer
 var play_glitch = false
 
 func _ready():
-	$Control2.visible = true
+	$Control2.visible = false
 	$Control2/game_over.visible = false
 	$Control2/Control/ColorRect.visible = false
 	
@@ -11,7 +11,20 @@ func _ready():
 	Game_data.connect("Wave_updated", self, "update_wave_count")
 	Game_data.connect("Infect", self, "play_glitch")
 	Game_data.connect("game_over", self, "game_over")
+	Game_data.connect("countdown", self, "show_ui")
+	Game_data.connect("update_shoot", self, "show_power_up")
 
+
+func show_ui(value):
+	$Control2.visible = true
+
+
+func show_power_up(value):
+	print("POWERUP")
+	var type = value.type
+	var time = value.time
+	$Control2/Powerup_UI.start_powerup(type, time)
+	
 
 func update_infected_count(value: int):
 	$Control2/infected.text = "Deviced infected: %s" % value

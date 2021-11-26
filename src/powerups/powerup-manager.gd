@@ -1,5 +1,6 @@
 extends Node2D
 
+export(String, "Rapid", "Multi") var type
 export(Color) var color: Color = Color(0, 0, 0)
 export(float) var rate: float = 0.0
 export(float) var spread: float = 0.0
@@ -18,6 +19,7 @@ func _on_Area2D_body_entered(body):
 			"rate": rate,
 			"spread": spread,
 			"amount": amount,
-			"time": time
+			"time": time,
+			"type": type
 		}
 		get_parent().queue_free()

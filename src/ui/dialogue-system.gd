@@ -39,7 +39,7 @@ func set_dialogue(value):
 
 func _process(_delta):
 	indicator.visible = finished
-	if Input.is_action_just_pressed("ui_accept"):
+	if (Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("mouse_click_primary")) and start_dialog:
 		if finished:
 			nextPhrase()
 		else:
@@ -49,6 +49,7 @@ func nextPhrase() -> void:
 	if phraseNum >= len(dialogue):
 		get_tree().paused = false
 		dialog_box.visible = false
+		start_dialog = false
 		emit_signal("finished_dialogue")
 		return
 	

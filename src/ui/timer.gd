@@ -2,7 +2,6 @@ extends Control
 
 var start = false
 var time = 0
-var score = 0
 
 func _ready():
 	Game_data.connect("countdown", self, "start_countdown")
@@ -30,8 +29,7 @@ func _process(delta):
 	var mins = fmod(time, 60 * 60) / 60
 	
 	var time_passed = "%02d:%02d:%03d" % [mins, secs, mils]
-	var score_str = "%02d%02d%03d" % [mins, secs, mils]
-	
+
 	$Timer.text = time_passed
 
 

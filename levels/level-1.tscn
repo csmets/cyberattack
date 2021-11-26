@@ -1,23 +1,27 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://levels/level-1.gd" type="Script" id=1]
 [ext_resource path="res://src/ui/dialogue-system.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/scene-manager.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/cyber-tileset.tres" type="TileSet" id=4]
 [ext_resource path="res://src/player/player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/ui/level-intro.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/targets/computer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/enemy/spawn-point.tscn" type="PackedScene" id=8]
 
 [node name="Level_1" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="scene_manager" parent="." instance=ExtResource( 3 )]
-wave_length = 3
-wave_time = 5.0
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Dialogue_system" parent="CanvasLayer" instance=ExtResource( 2 )]
+
+[node name="Level_intro" parent="CanvasLayer" instance=ExtResource( 6 )]
+text = "Level 01 - Beginnings"
+
+[node name="scene_manager" parent="." instance=ExtResource( 3 )]
+wave_length = 3
+wave_time = 5.0
 
 [node name="Ground" type="TileMap" parent="."]
 tile_set = ExtResource( 4 )
@@ -141,4 +145,5 @@ position = Vector2( -190.203, -121.862 )
 position = Vector2( -123.978, -131.403 )
 
 [connection signal="finished_dialogue" from="CanvasLayer/Dialogue_system" to="." method="_on_Dialogue_system_finished_dialogue"]
+[connection signal="end_level_intro" from="CanvasLayer/Level_intro" to="." method="_on_Level_intro_end_level_intro"]
 [connection signal="healed" from="Computer" to="." method="_on_Computer_healed"]
