@@ -131,7 +131,6 @@ margin_bottom = 47.0
 
 [node name="game_over" type="CenterContainer" parent="."]
 pause_mode = 2
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -179,7 +178,6 @@ __meta__ = {
 }
 
 [node name="Glitch" type="ColorRect" parent="."]
-visible = false
 material = SubResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0

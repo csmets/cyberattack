@@ -11,7 +11,7 @@ func _ready():
 func _on_Dialogue_system_finished_dialogue():
 	$scene_manager.visible = true
 	if final_dialogue:
-		get_tree().change_scene("res://levels/level-2.tscn")
+		get_tree().change_scene("res://levels/boss-level.tscn")
 	if start_level:
 		Game_data.start_countdown(5)
 

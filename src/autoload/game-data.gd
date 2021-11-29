@@ -55,6 +55,7 @@ func game_over():
 
 func level_complete():
 	emit_signal("level_complete")
+	reset()
 
 
 func set_shoot_values(value: Dictionary):

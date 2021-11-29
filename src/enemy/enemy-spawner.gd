@@ -4,7 +4,7 @@ onready var explosion = preload("res://src/explosions/explosion.tscn")
 onready var projectile = preload("res://src/enemy/enemy-projectile.tscn")
 
 var delta_timer = Delta_Timer.new()
-var spawn_time := 2.0
+var spawn_time := 3.0
 
 var enemy_spawner_spawned = false
 

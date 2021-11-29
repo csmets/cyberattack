@@ -45,7 +45,6 @@ shape = SubResource( 3 )
 [node name="enemy-sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "move"
-frame = 3
 playing = true
 
 [node name="Enemy_movement" parent="." instance=ExtResource( 3 )]

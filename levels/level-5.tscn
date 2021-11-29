@@ -34,8 +34,8 @@ tile_data = PoolIntArray( -917518, 14, 0, -917517, 2, 0, -917516, 2, 0, -917515,
 
 [node name="scene_manager" parent="." instance=ExtResource( 5 )]
 retry_scene = "res://levels/level-5.tscn"
-wave_length = 12
-wave_time = 20.0
+wave_length = 6
+wave_time = 15.0
 wave_multiplier = 2
 enemies = 3
 
