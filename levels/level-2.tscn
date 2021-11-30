@@ -44,14 +44,13 @@ text = "Level 02 - Ready to rumble"
 
 [node name="Computer" parent="." instance=ExtResource( 12 )]
 position = Vector2( 431.407, 60.844 )
-frame = 1
 
 [node name="Computer2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 119.014, 353.055 )
-frame = 1
 
 [node name="Computer3" parent="." instance=ExtResource( 12 )]
 position = Vector2( 103.878, 56.2191 )
+frame = 1
 
 [node name="spawn_points" type="Node2D" parent="."]
 
