@@ -22,6 +22,7 @@ _global_script_class_icons={
 
 config/name="Cyberattack"
 run/main_scene="res://levels/main-menu.tscn"
+boot_splash/image="res://splash-screen.png"
 config/icon="res://icon.png"
 
 [autoload]
