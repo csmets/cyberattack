@@ -48,7 +48,7 @@ func level_completed():
 
 func _on_Dialogue_system_finished_dialogue():
 	if final_dialogue:
-		get_tree().change_scene("res://levels/main-menu.gd")
+		get_tree().change_scene("res://levels/main-menu.tscn")
 	if start_level:
 		Game_data.start_countdown(0)
 

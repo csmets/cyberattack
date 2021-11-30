@@ -12,6 +12,7 @@ func _ready():
 	Game_data.connect("spawn_enemies", self, "heal_status")
 	
 	if infect:
+		_healed = false
 		target.emit_signal("infect")
 
 # Check if super computer is healed before next wave, if it's not, it's game over.

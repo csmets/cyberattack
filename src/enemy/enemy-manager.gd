@@ -19,6 +19,10 @@ var end_delay_timer = Delta_Timer.new()
 
 var rng = RandomNumberGenerator.new()
 
+func reset():
+	start = false
+	trigger_next_wave = false
+
 func setup(wave_time, wave_multiplier, wave_length, enemies):
 	_wave_time = wave_time
 	_wave_multiplier = wave_multiplier

@@ -32,7 +32,7 @@ region_rect = Rect2( 198, 46, 4, 10 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
-volume_db = 1.0
+volume_db = 10.0
 autoplay = true
 
 [node name="Area2D" type="Area2D" parent="." groups=["bullet"]]

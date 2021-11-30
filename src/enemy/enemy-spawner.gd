@@ -20,7 +20,7 @@ func _physics_process(delta):
 func _on_Enemy_spawner_area_entered(area):
 	if area.is_in_group("bullet"):
 		var explosion_instance = explosion.instance()
-		get_tree().root.add_child(explosion_instance)
+		get_parent().add_child(explosion_instance)
 		explosion_instance.position = self.global_position
 		Game_data.camera.shake(300, 1, 150)
 		self.queue_free()

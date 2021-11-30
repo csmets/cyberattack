@@ -26,7 +26,6 @@ func show_ui(value):
 
 
 func show_power_up(value):
-	print("POWERUP")
 	var type = value.type
 	var time = value.time
 	$Control2/Powerup_UI.start_powerup(type, time)

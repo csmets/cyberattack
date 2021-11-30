@@ -57,7 +57,7 @@ func shoot(delta: float, rate: float, spread: float, amount: int, color = null):
 		
 		for num in range(amount):
 			var bullet_instance = bullet.instance()
-			get_tree().root.add_child(bullet_instance)
+			get_parent().add_child(bullet_instance)
 			var bullet_spawn_pos = $AnimatedSprite/End_of_gun.global_position
 			bullet_instance.global_position = bullet_spawn_pos
 			var target = get_global_mouse_position()

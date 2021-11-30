@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/font/C64.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/characters/Masculine_A/Hair_A_masculine_A-base.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/characters/Accessories/Glasses_C.png" type="Texture" id=4]
 [ext_resource path="res://assets/characters/Masculine_A/Masculine_A_default.png" type="Texture" id=5]
 [ext_resource path="res://src/ui/dialogue-system.gd" type="Script" id=6]
+[ext_resource path="res://assets/sounds/Ui Bleep 5.wav" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -127,3 +128,8 @@ text = ">"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dialogue_box"]
+stream = ExtResource( 7 )
+volume_db = -30.0
+pitch_scale = 0.5

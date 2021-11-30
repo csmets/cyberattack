@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Ui Bleep 9.wav-3424e0ed33bb09a7ddb7fd003b667c4b.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Ui Bleep 9.wav"
+dest_files=[ "res://.import/Ui Bleep 9.wav-3424e0ed33bb09a7ddb7fd003b667c4b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

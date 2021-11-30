@@ -106,8 +106,8 @@ texture = SubResource( 10 )
 [node name="scene_manager" parent="." instance=ExtResource( 8 )]
 retry_scene = "res://levels/boss-level.tscn"
 wave_length = 1000
-wave_time = 5.0
 wave_multiplier = 6
+enemies = 3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

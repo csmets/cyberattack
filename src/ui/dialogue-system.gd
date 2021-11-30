@@ -16,7 +16,7 @@ var sad = load("res://assets/characters/Masculine_A/Masculine_A_sad.png")
 var annoyed = load("res://assets/characters/Masculine_A/Masculine_A_annoyed.png")
 var surprised = load("res://assets/characters/Masculine_A/Masculine_A_surprised.png")
 
-export(float) var textSpeed = 0.05
+export(float) var textSpeed = 0.025
 
 var dialogue
 
@@ -78,6 +78,7 @@ func nextPhrase() -> void:
 	
 	while text.visible_characters < len(text.text):
 		text.visible_characters += 1
+		$Dialogue_box/AudioStreamPlayer.play()
 		
 		timer.start()
 		yield(timer, "timeout")

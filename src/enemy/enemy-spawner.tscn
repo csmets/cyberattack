@@ -47,6 +47,7 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
+frame = 1
 playing = true
 
 [connection signal="area_entered" from="." to="." method="_on_Enemy_spawner_area_entered"]

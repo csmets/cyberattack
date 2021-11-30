@@ -26,10 +26,10 @@ func place_powerups(wave: int):
 			
 			if (powerup_num == 1):
 				var instance = rapid_fire.instance()
-				get_tree().root.add_child(instance)
+				add_child(instance)
 				instance.global_position = spawn_position
 			
 			if powerup_num == 2:
 				var instance = multi_fire.instance()
-				get_tree().root.add_child(instance)
+				add_child(instance)
 				instance.global_position = spawn_position
